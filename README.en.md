@@ -1,12 +1,16 @@
-![handoff: keep the project moving between conversations](assets/cover.svg)
+[![handoff: keep the project moving between conversations](assets/video-preview.jpg)](https://raw.githubusercontent.com/jidekaixin2dian/handoff/main/assets/handoff-intro.mp4)
 
-[中文](README.md) · [Example](docs/example.md) · [Validation notes](docs/validation.md)
+[中文](README.md) · [Quick start](#start-with-codex) · [Example](docs/example.md) · [Media](#media)
 
 # handoff
 
-**Help the next person or agent understand where a project stands and what comes next.**
+**A new conversation. The same project, moving forward.**
 
-Long projects accumulate repeated handoffs, stale versions, and old task lists. `handoff` is a small, instruction-only skill that verifies the workspace state, prepares a concise current entry point, and links to the evidence needed for the next task.
+Starting a new conversation during a long AI-assisted task often means explaining the project again: which version is current, what is finished, and what comes next?
+
+`handoff` is a lightweight project handoff skill. It verifies the workspace state, prepares a concise current entry point, and links to the evidence needed for the next task. Help the next person or agent pick up where the project stands. Instruction-only, MIT licensed, with no extra service to deploy.
+
+[Watch / download the 36-second introduction](https://raw.githubusercontent.com/jidekaixin2dian/handoff/main/assets/handoff-intro.mp4)
 
 ## Start with Codex
 
@@ -38,15 +42,18 @@ Keep historical instructions separate from current tasks. An offline check does 
 
 ![Illustrated handoff flow](assets/workflow.gif)
 
-This illustration and the video use a fictional project. They explain the workflow; they are not recordings of an automatic model execution.
-
-[36-second introduction](https://raw.githubusercontent.com/jidekaixin2dian/handoff/main/assets/handoff-intro.mp4) · [Before and after](docs/example.md)
+[See the before-and-after example](docs/example.md).
 
 ## Keep the boundaries
 
 Preserve raw data, frozen evaluations, human ratings, hashes, unique decisions, and existing user changes, including untracked files. Only consider repository cleanup when requested; a file being downloadable again does not establish that it can be removed safely.
 
-This is a standalone skill package, not a listed plugin. It does not automatically manage conversations, commit, publish, send messages, optimize application RAM, or clean an entire computer.
+## Media
+
+- [Introduction video](https://raw.githubusercontent.com/jidekaixin2dian/handoff/main/assets/handoff-intro.mp4): 36 seconds, 1080p, 30 fps, with serif titles and an original electric-piano score.
+- [Video source ZIP](downloads/handoff-video-source.zip): the editable Remotion project, local fonts, and audio assets.
+- [Chinese launch copy](docs/launch.md): titles and descriptions for Douyin and Bilibili, plus a Juejin article.
+- [Video cover](assets/video-preview.jpg) · [Social card](assets/social-card.png) · [Workflow GIF](assets/workflow.gif).
 
 ## Evidence and feedback
 

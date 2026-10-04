@@ -1,12 +1,16 @@
-![handoff · 项目交接：换个对话，项目接着做](assets/cover.svg)
+[![handoff · 换个对话，项目接着做](assets/video-preview.jpg)](https://raw.githubusercontent.com/jidekaixin2dian/handoff/main/assets/handoff-intro.mp4)
 
-[English](README.en.md) · [快速开始](#快速开始) · [交接示例](docs/example.md) · [检查记录](docs/validation.md)
+[English](README.en.md) · [快速开始](#快速开始) · [交接示例](docs/example.md) · [宣传素材](#宣传素材)
 
 # handoff · 项目交接
 
-**让下一位 Agent 或人，知道项目现在在哪里、接下来做什么。**
+**换个对话，项目接着做。**
 
-长任务里，旧版本、重复交接和过期待办很容易混在一起。`handoff` 是一个小型、纯指令的 skill：从工作区的真实状态整理当前入口，把下一步、约束和证据放在容易接手的位置。
+用 AI 做长任务，换个新对话时，往往要重新解释项目：哪个版本有效？哪些事已经做完？接下来做什么？
+
+`handoff` 是一个轻量的项目交接 skill。先核实工作区的当前状态，再整理状态、下一步、关键约束和证据入口，让下一位 Agent 或同事知道从哪里接着做。纯指令，MIT 开源，不需要额外部署服务。
+
+[观看 / 下载 36 秒介绍视频](https://raw.githubusercontent.com/jidekaixin2dian/handoff/main/assets/handoff-intro.mp4)
 
 ## 快速开始
 
@@ -46,9 +50,7 @@ $skill-installer 从 https://github.com/jidekaixin2dian/handoff/tree/main/skills
 
 ![交接流程示意：旧文档中的版本与待办整理为当前状态、下一步和证据入口](assets/workflow.gif)
 
-上图和视频使用虚构项目，是流程示意，不是模型自动执行录屏。完整例子见 [交接前后](docs/example.md)。
-
-[观看 / 下载 36 秒介绍视频](https://raw.githubusercontent.com/jidekaixin2dian/handoff/main/assets/handoff-intro.mp4) · [社区介绍文案](docs/launch.md)
+完整例子见 [交接前后](docs/example.md)。
 
 ## 适合这些时候
 
@@ -67,7 +69,12 @@ $handoff 只读审查当前交接，指出过期状态、断链和遗漏，不�
 
 原始数据、冻结评估、人工评分、哈希、独有决策和已有用户修改都要保留。没有清理请求，就不会顺手删除文件；“还能重新下载”也不是充分的删除理由。
 
-这是独立 skill 文件包，不是已上架插件。它不自动创建或关闭对话、提交、发布或发送消息，也不处理应用 RAM 或整机磁盘清理。
+## 宣传素材
+
+- [介绍视频](https://raw.githubusercontent.com/jidekaixin2dian/handoff/main/assets/handoff-intro.mp4)：36 秒，1080p，30 fps；衬线标题与原创电钢琴配乐。
+- [视频源文件 ZIP](downloads/handoff-video-source.zip)：Remotion 项目、字体与配乐文件，可本地预览和修改。
+- [抖音、B站、掘金发布文案](docs/launch.md)：各平台标题、简介或正文，以及安装入口。
+- [视频封面](assets/video-preview.jpg) · [项目分享图](assets/social-card.png) · [流程 GIF](assets/workflow.gif)。
 
 ## 验证与反馈
 
