@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="handoff logo">
+  <rect width="256" height="256" rx="52" fill="#172d25"/>
+  <rect x="42" y="38" width="132" height="170" rx="16" fill="#708a62" transform="rotate(-12 108 123)"/>
+  <rect x="72" y="42" width="132" height="170" rx="16" fill="#f3f4ed"/>
+  <path d="M96 80h66M96 110h82" stroke="#9baa92" stroke-width="10" stroke-linecap="round"/>
+  <path d="M93 165h86m-19-18 19 18-19 18" fill="none" stroke="#5d862f" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

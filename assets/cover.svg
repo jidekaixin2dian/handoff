@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">handoff · 项目交接</title>
+  <desc id="desc">换个对话，项目接着做。核实状态，整理下一步，保留关键证据。</desc>
+  <rect width="1280" height="640" rx="24" fill="#f3f4ed"/>
+  <g font-family="Inter,Arial,Microsoft YaHei,sans-serif" fill="#172d25">
+    <text x="72" y="84" font-size="18" letter-spacing="3">A SMALL SKILL FOR CONTINUING REAL WORK</text>
+    <text x="65" y="280" font-size="166" font-weight="800" letter-spacing="-9">handoff<tspan fill="#81ad47">.</tspan></text>
+    <text x="76" y="360" font-size="43" font-weight="700">换个对话，项目接着做。</text>
+    <text x="77" y="414" font-size="24" fill="#52635b">核实状态 · 整理下一步 · 保留关键证据</text>
+    <path d="M76 508h1128" stroke="#cbd2c6"/>
+    <text x="77" y="559" font-size="18">项目交接 / FOR HUMANS AND AGENTS</text>
+    <text x="868" y="559" font-size="17">github.com/jidekaixin2dian/handoff</text>
+  </g>
+  <g transform="translate(880 155)">
+    <rect x="-64" y="0" width="260" height="304" rx="15" fill="#dce3d4" transform="rotate(-9)"/>
+    <rect x="-30" y="-4" width="260" height="304" rx="15" fill="#c8dda7" transform="rotate(7)"/>
+    <rect width="260" height="304" rx="15" fill="#ffffff" stroke="#172d25" stroke-width="2"/>
+    <path d="M34 58h95M34 88h184M34 124h184M34 160h132" stroke="#a6b59e" stroke-width="9" stroke-linecap="round"/>
+    <rect x="25" y="212" width="210" height="66" rx="10" fill="#172d25"/>
+    <path d="M76 245h105m-20-17 20 17-20 17" fill="none" stroke="#c4ed80" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
