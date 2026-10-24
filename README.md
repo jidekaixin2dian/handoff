@@ -1,6 +1,6 @@
 [![handoff · 换个对话，项目接着做](assets/video-preview.jpg)](https://raw.githubusercontent.com/jidekaixin2dian/handoff/main/assets/handoff-intro.mp4)
 
-[English](README.en.md) · [快速开始](#快速开始) · [交接示例](docs/example.md) · [宣传素材](#宣传素材)
+[English](README.en.md) · [快速开始](#快速开始) · [交接示例](docs/example.md) · [项目演示](#项目演示)
 
 # handoff · 项目交接
 
@@ -69,16 +69,13 @@ $handoff 只读审查当前交接，指出过期状态、断链和遗漏，不�
 
 原始数据、冻结评估、人工评分、哈希、独有决策和已有用户修改都要保留。没有清理请求，就不会顺手删除文件；“还能重新下载”也不是充分的删除理由。
 
-## 宣传素材
+## 项目演示
 
-- [介绍视频](https://raw.githubusercontent.com/jidekaixin2dian/handoff/main/assets/handoff-intro.mp4)：36 秒，1080p，30 fps；衬线标题与原创电钢琴配乐。
+- [介绍视频](https://raw.githubusercontent.com/jidekaixin2dian/handoff/main/assets/handoff-intro.mp4)：36 秒，展示项目交接流程。
 - [视频源文件 ZIP](downloads/handoff-video-source.zip)：Remotion 项目、字体与配乐文件，可本地预览和修改。
-- [抖音、B站、掘金发布文案](docs/launch.md)：各平台标题、简介或正文，以及安装入口。
 - [视频封面](assets/video-preview.jpg) · [项目分享图](assets/social-card.png) · [流程 GIF](assets/workflow.gif)。
 
-## 验证与反馈
-
-已完成格式检查、12 类场景静态审查、隔离文件演练和公开下载安装验证。证据与实际限制见 [检查记录](docs/validation.md)。尚未进行跨模型评测或 token 节省测量。
+## 反馈
 
 遇到不合适的交接行为，欢迎 [提交 Issue](https://github.com/jidekaixin2dian/handoff/issues/new)：说明请求、实际结果和预期结果，删去凭据、私有资料及个人路径后再分享。
 

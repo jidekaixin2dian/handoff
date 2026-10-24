@@ -1,6 +1,6 @@
 [![handoff: keep the project moving between conversations](assets/video-preview.jpg)](https://raw.githubusercontent.com/jidekaixin2dian/handoff/main/assets/handoff-intro.mp4)
 
-[中文](README.md) · [Quick start](#start-with-codex) · [Example](docs/example.md) · [Media](#media)
+[中文](README.md) · [Quick start](#start-with-codex) · [Example](docs/example.md) · [Demo](#demo)
 
 # handoff
 
@@ -48,16 +48,13 @@ Keep historical instructions separate from current tasks. An offline check does 
 
 Preserve raw data, frozen evaluations, human ratings, hashes, unique decisions, and existing user changes, including untracked files. Only consider repository cleanup when requested; a file being downloadable again does not establish that it can be removed safely.
 
-## Media
+## Demo
 
-- [Introduction video](https://raw.githubusercontent.com/jidekaixin2dian/handoff/main/assets/handoff-intro.mp4): 36 seconds, 1080p, 30 fps, with serif titles and an original electric-piano score.
+- [Introduction video](https://raw.githubusercontent.com/jidekaixin2dian/handoff/main/assets/handoff-intro.mp4): a 36-second demonstration of the project handoff workflow.
 - [Video source ZIP](downloads/handoff-video-source.zip): the editable Remotion project, local fonts, and audio assets.
-- [Chinese launch copy](docs/launch.md): titles and descriptions for Douyin and Bilibili, plus a Juejin article.
 - [Video cover](assets/video-preview.jpg) · [Social card](assets/social-card.png) · [Workflow GIF](assets/workflow.gif).
 
-## Evidence and feedback
-
-Validation includes format checks, static review of twelve scenarios, one manual isolated file exercise, and public installation checks. See [the validation notes](docs/validation.md) for evidence and limits. Cross-model behavior and token savings have not been measured. The package follows `SKILL.md` conventions; behavior in other clients has not been individually tested.
+## Feedback
 
 For feedback, [open an issue](https://github.com/jidekaixin2dian/handoff/issues/new) with the request, observed behavior, and expected behavior. Remove credentials and private material before sharing.
 
