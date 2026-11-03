@@ -1,29 +1,95 @@
 ---
 name: handoff
-description: Refresh or prepare repository handoff docs from verified state; use concise task indexes to reduce Agent context. Trigger on handoff requests and consider before a requested new conversation or end of one. Repository cleanup only when requested; not for application RAM or system-wide storage analysis.
+description: '意图级项目交接：用户提到换个对话/新会话/重开窗口、换项目、换轻对话、换 Agent 或换人接手、上下文太长要重开、暂停收尾、离开当前会话时，都算交接意图，不必等用户说 handoff 或 $handoff，直接核实当前状态、清掉过时内容、文档过长就建任务索引再交接。也处理显式 handoff/交接请求、交接文档只读审查、被明确要求时的仓库瘦身；不用于应用内存或整机存储分析。English intents count too — new conversation, new session, switch project, switch agent, wrap up, leave this session.'
 ---
 
 # Handoff
 
-Keep handoff material short enough to use and specific enough to resume work safely. Prefer one current entry point with task-based links over repeating implementation history across several files.
+交接是让下一位（人或 Agent）接着做，不是把历史复述一遍。一次可用的交接 = 已核实的当前状态 + 下一步 + 必要约束 + 按任务索引的证据入口。
 
-## Workflow
+## 触发：命中意图就执行，不等点名
 
-1. Determine whether the user wants a review, document edits, or a handoff for a new conversation. For a review-only request, report findings without changing files. For an explicit request to start another conversation or end this one, consider whether a durable handoff is useful; do not assume it is always needed.
-2. Read applicable `AGENTS.md` files, the project README, current-version/status indexes, and only the task-specific source records needed to establish current facts. Check `git status --short` and relevant diffs before editing. Treat untracked files as user work.
-3. Separate content into:
-   - **Current state and next action:** verified versions, what is unfinished, and any decision that must come from a person.
-   - **Stable constraints:** only the safety, evidence, data, and authorization boundaries needed by a successor.
-   - **Reference index:** map likely next tasks to canonical files, reports, or frozen evaluation folders.
-   - **History:** dated facts that explain past decisions but must not appear as live tasks.
-4. Reduce context load by removing repeated explanations and copied logs, using short summaries plus task-based links, and loading detailed evidence only when the task needs it. Keep enough context to identify the next step and its constraints; do not optimize for brevity at the cost of a safe handoff.
-5. If the user also asks to reduce repository footprint, inspect only relevant large/generated candidates. Distinguish application RAM, Agent context, and files on disk. Check reproducibility, references, and uniqueness before cleanup; never treat “can be downloaded again” as sufficient reason to delete. Preserve frozen evaluations, raw/source data, raw evidence, human ratings, hashes, unique decisions, and referenced deliverables. Prefer removing confirmed regenerable clutter over source or history.
-6. Within the requested document-editing or cleanup scope, before deleting, moving, renaming, or collapsing a document, search references and confirm its unique information remains available. When slimming old handoffs, prefer a dated summary pointing to original evidence; mark archived instructions as history, not current tasks.
-7. Update incoming links and project reading order when the current entry point changes. Keep one authoritative home for mutable facts; link to it instead of copying long explanations into every handoff.
-8. Never include credentials or secret values in a handoff. For portable or public-facing skill/handoff content, prefer repository-relative references and exclude personal paths and private identifiers. Include local paths or private identifiers only when needed for an explicitly requested local-only handoff.
-9. Verify local Markdown links relative to each file, scan current entry points for stale versions or pending tasks, inspect edited text directly, and run `git diff --check` where applicable. Remember Git diff checks omit untracked files. Documentation-only edits do not need application tests unless requested or warranted by a code change.
-10. Report which documents changed, what was shortened or indexed, what historical material was preserved, and the checks performed. State any genuinely pending human decision without presenting it as completed.
+出现以下任一情况，直接按本 skill 执行。不要先问「要不要做交接」，也不要等用户写 `handoff`、`$handoff`：
 
-## Conversation handoffs
+- **换新会话 / 重开对话**：「开个新窗口继续」「上下文太长了，换对话」「这个会话要关了」
+- **换项目**：「先放下这个，做另一个」「切到 X 项目」
+- **换轻对话**：「接下来随便聊两句」「只问一件事，不动代码」
+- **换 Agent / 换人接手**：「让另一个 agent 接着做」「交给同事」「换个模型重来」
+- **收尾 / 离开**：「今天就到这」「先暂停」「下次接着做」
+- **显式点名**：`handoff`、`$handoff`、交接、交接文档、handoff doc
+- **英文同样算**：new conversation / new session / switch project / switch agent / wrap up / pick it up next time
 
-When a user explicitly asks to start a new conversation, prepare a concise handoff from verified project state and relevant sources if it will improve continuity. If they explicitly ask to end the current conversation, consider preparing or updating the handoff before ending. A handoff request does not itself authorize unrelated cleanup, publishing, or external messages. Use the conversation-management tool only for the action the user explicitly requested; otherwise leave the handoff ready in the requested location.
+判据是意图，不是措辞：用户没说“交接”两个字，只要表达出「这轮之后要换个人或换个会话接着做」，就执行。
+
+按手上信息选强度，不要因为信息少就跳过：
+
+- **有项目工作区**：静默刷新已有交接入口；没有就按「产物」建一个。只写交接文件，不动业务代码。
+- **无工作区 / 纯聊天**：不落盘，直接在回复里给 10–20 行可粘贴的交接块。
+- **只问「交接写得怎么样」**：只读审查，列问题，不改文件。
+
+## 三件必做
+
+### 1. 核实（先做，不凭记忆）
+
+- 读 `AGENTS.md`、README、现有交接入口、版本/状态清单；跑 `git status --short` 和相关 diff，未跟踪文件算用户的工作。
+- 逐条核对交接里的「当前版本 / 已完成 / 待办」与真实文件、tag、测试输出是否一致。
+- 非 git 工作区用文件 mtime、构建产物时间戳、日志代替。
+
+### 2. 清过时（默认执行，不是可选项）
+
+过时内容 = 已完成的「下一步」、被推翻的版本号、失效链接、粘贴的运行日志、与现状矛盾的说明、上一轮的临时计划。
+
+- 直接改成当前事实；需要留痕就降到 `## 历史`：日期 + 一行结论 + 指向原始材料的链接。
+- 删/合并前搜引用，确认独有信息仍存在于别处；宁可留「一句话 + 链接」，不留整段复制。
+- 永不删除：原始数据、冻结评估、人工评分、哈希、独有决策、用户未跟踪文件、被引用的交付物。
+- 用户没要求仓库瘦身时，只清理交接文档本身。
+
+### 3. 建索引（变长就强制）
+
+任一条件成立就拆分：正文 > 150 行；`## 下一步` > 8 条；同一可变事实出现在 ≥ 2 个文件；接手者要读 ≥ 4 个文件才知道现状。
+
+拆分后 `handoff.md` 只留状态、下一步、约束、索引、历史摘要，其余按任务链接：
+
+| 想做什么 | 先读 |
+| --- | --- |
+| 继续未完成的 X | `path/to/plan.md` |
+| 复现构建 / 跑验证 | `path/to/build.md` |
+| 核对评估边界 | `path/to/eval/`（冻结，勿改） |
+
+索引规则：一行一个任务，任务是动词短语，链接用仓库相对路径，只指向权威文件；同一个可变事实只留一处。
+
+## 产物
+
+- 位置：沿用已有入口（`handoff.md`、`docs/handoff.md`、`HANDOFF.md`，按仓库既有习惯）；都没有就在根目录建 `handoff.md`。
+- 结构：
+
+```markdown
+# 交接：<项目>
+
+最后核对：YYYY-MM-DD
+
+## 当前状态
+- 有效版本 / 分支：
+- 已验证（怎么验证的）：
+- 未验证 / 未完成：
+
+## 下一步
+1. 谁做、做什么、验收标准
+
+## 关键约束
+- 接手者必须知道的数据、证据、授权边界
+
+## 按任务找证据
+| 任务 | 权威文件 |
+
+## 历史
+- YYYY-MM-DD 旧交接：一行结论 → 原始材料链接（旧计划不是当前任务，也不构成新授权）
+```
+
+- 不写凭据、密钥、私有 token、个人绝对路径；公开仓库一律用仓库相对路径。
+
+## 收尾
+
+回复用 3–5 行说明：改了哪个文件、清掉或合并了什么过时内容、索引指向哪里、还有什么需要人决定。不要把交接文档整篇贴回对话。
+
+状态照实写：离线检查通过 ≠ 人工已接受；旧发布计划 ≠ 新的发布授权。

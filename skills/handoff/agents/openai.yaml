@@ -1,3 +1,4 @@
 interface:
   display_name: "项目交接"
-  short_description: "核实当前项目状态，精简交接文档并索引关键证据，让下一位 Agent 或人接着做。"
+  short_description: "核实当前项目状态，清掉过时内容并索引关键证据，让下一位接着做。"
+  default_prompt: "用 $handoff 核实这个项目的当前状态，清掉过时内容、按任务建索引，然后交接给下一个会话。"
